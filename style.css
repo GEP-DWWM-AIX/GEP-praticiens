@@ -1,0 +1,91 @@
+body{
+    padding: 0;
+    margin: 0;
+    overscroll-behavior: none;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+main{
+    display: flex;
+}
+
+.center{
+    justify-content: center;
+    display: flex;
+}
+
+.sidebar{
+    height: 90vh;
+    width: 300px;
+    background-color: white;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.praticiens{
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+
+}
+
+.avatar{
+    width: 70px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.card-praticien{
+    margin: auto;
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    transition: .4s ease-in-out;
+}
+
+.card-praticien:hover{
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    transition: .4s ease-in-out;
+}
+
+.nom{
+    /* position: absolute; */
+    padding: 20px;
+    
+}
+
+.visite{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.localite{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.specialite{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+form{
+    padding: 20px;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">LOGO</div>
+            <div class="links">Connexion</div>
+        </nav>
+    </header> 
+    <main>
+        <div class="sidebar">
+            <form>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nom du praticien</label>
+                    <input type="email" class="form-control" id="nom" placeholder="Ex: Dupres" autocomplete="off" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Localité</label>
+                    <input type="password" class="form-control" id="localite" placeholder="Ex: Marseille">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Spécialité</label>
+                    <input type="text" class="form-control" id="specialite" placeholder="Ex: Dentiste">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="visite">Déjà visité</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyé</button>
+            </form>
+        </div>
+        <div class="praticiens">
+         <h3>Voici vos praticiens</h3>
+            <div class="container">
+                <div class="row"></div>
+            </div>
+        </div>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
