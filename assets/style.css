@@ -2,6 +2,39 @@ body{
     padding: 0;
     margin: 0;
     overscroll-behavior: none;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body.dark{
+    background-color:#121212;
+    color: #e1e1ff;
+    transition: 0.4s ease;
+}
+
+body.dark .praticiens .card-praticien{
+    background-color: #1F1F1F;
+}
+
+body.dark .get-prat, body.dark .link{
+    background-color: #03DAC5;
+    border-color:  #03DAC5;
+    color: black;
+}
+
+body.dark nav{
+    background-color: #1F1F1F;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .form-check-input:checked{
+    background-color:  #03DAC5;
+    border-color:  #03DAC5;
+}
+
+body.dark .form-control, body.dark .form-select{
+    background-color: #1F1F1F;
+    color:  #e1e1ff;
 }
 
 nav{
@@ -14,27 +47,42 @@ nav{
     padding: 30px;
 }
 
+.link{
+    margin: 10px;
+}
+
 main{
     display: flex;
 }
 
-.center{
-    justify-content: center;
-    display: flex;
+.resultat{
+    width: 100%;
 }
 
-.sidebar{
-    height: 90vh;
-    width: 300px;
-    background-color: white;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
+.center{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
 
+.map{
+    height: 90vh;
+    width: 600px;
+    background-color: white;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.option{
+    width: 50%;
 }
 
 .praticiens{
-    margin-top: 100px;
+    margin-top: 50px;
     width: 100%;
     text-align: center;
+    overflow-y: scroll;
+    height: 100vh;
 
 }
 
@@ -48,7 +96,7 @@ main{
 .card-praticien{
     margin: auto;
     position: relative;
-    width: 400px;
+    width: 100%;
     height: 200px;
     background-color: white;
     border-radius: 5px;
@@ -89,3 +137,19 @@ main{
 form{
     padding: 20px;
 }
+
+.get-prat{
+    width: 125px;
+    height: 40px;
+}
+
+.search .form-control{
+    width: 133%;
+}
+
+.thumb-xl{
+    width: 100%;
+    transition: .4s ease;
+}
+
+
