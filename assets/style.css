@@ -82,7 +82,7 @@ main{
     width: 100%;
     text-align: center;
     overflow-y: scroll;
-    height: 100vh;
+    height: 66vh;
 
 }
 
@@ -152,7 +152,7 @@ form{
     transition: .4s ease;
 }
 
-.card{
+.card-autocomplete{
     position: fixed;
     width: 30%;
     display: none;
@@ -177,4 +177,36 @@ form{
 .fa-globe-africa{
     position: absolute;
     left: 20px;
+}
+
+.avatar-show-prat{
+    margin: auto;
+    width: 50%;
+    border-radius: 50%;
+}
+
+.card-prat{
+    padding: 10px;
+    text-align: center;
+}
+
+.card-prat p{
+    color: gray;
+}
+
+.user-profile{
+    margin-top: 20px;
+}
+
+.alert{
+    text-align: center;
+}
+
+.card-bloc{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-infos span{
+    color: gray;
 }

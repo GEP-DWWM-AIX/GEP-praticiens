@@ -1,20 +1,33 @@
 let mymap = '';
-const getMap = async (arrayOfAddress, vueMode) => { 
+
+const getMap = async (arrayOfAddress, allData, vueMode) => { 
+    console.log(allData);
+    if (mymap !== '') {
+        mymap.remove();
+    }
     var promiseArray = [];
     arrayOfAddress.forEach(address => {
         url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=pk.eyJ1IjoiYWNhcmRuaWNvbGFzOTEiLCJhIjoiY2swcnloczN0MGJneDNjbzB1am9ob3cycCJ9.5JXyVWCo9csiDd-U5bvejw`;
         promiseArray.push(fetch(url).then(response => response.json()))
     });
     let res = await Promise.all(promiseArray);
- 
-    if(mymap !== ''){
-        mymap.remove();
-    }
     // initialize the map on the "map" div with a given center and zoom
     mymap = L.map('mapid').setView([43.336451, 5.367485], 13);
     var group = new L.featureGroup();
+
+    let i = 0;
     res.forEach((coord) => {
-        L.marker([coord.features[0].center[1], coord.features[0].center[0]]).addTo(group).addTo(mymap);
+        let marker = L.marker([coord.features[0].center[1], coord.features[0].center[0]])
+        .addTo(group)
+        .addTo(mymap)
+        .bindPopup(`
+        <div class="text-center">
+        <h6>${allData[i].prenom} ${allData[i].nom}</h6>
+        <p>${allData[i].specialite}</p>
+        </div>
+        `)
+        .openPopup();
+        i++;
     });
     mymap.fitBounds(group.getBounds());
 
@@ -25,6 +38,4 @@ const getMap = async (arrayOfAddress, vueMode) => {
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoiYWNhcmRuaWNvbGFzOTEiLCJhIjoiY2swcnloczN0MGJneDNjbzB1am9ob3cycCJ9.5JXyVWCo9csiDd-U5bvejw'
     }).addTo(mymap);
-
-    
 }

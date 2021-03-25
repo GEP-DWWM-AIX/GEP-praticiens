@@ -18,8 +18,8 @@
 					<a href="index.html">LOGO</a>
 				</div>
 				<div class="links center">
-					<a href="#" class="btn btn-primary link">Ajouter un praticien</a>
-					<a href="#" class="btn btn-primary link">Déconnexion</a>
+					<!-- <a href="#" class="btn btn-primary link">Ajouter un praticien</a>
+					<a href="#" class="btn btn-primary link">Déconnexion</a> -->
 				</div>
 			</nav>
 		</header>
@@ -29,7 +29,7 @@
                     <form class="center">
                         <div class="location-autocomplete">
                             <input type="text" class="form-control" id="localite" autocomplete="off" placeholder="Ex: Marseille">
-                            <div class="card">
+                            <div class="card card-autocomplete">
                                 <div class="card-body">
                                 <ul class="ville-liste"></ul>
                                 </div>
@@ -65,7 +65,17 @@
                         <div class="row"></div>
                     </div>
                 </div>
-                <div class="user-profile"></div>
+                <div class="container">
+                    <div class="user-profile">
+                        <div class="alert alert-warning" role="alert">
+                            Ce praticien n'a jamais été visité.
+                        </div>
+                        <div class="alert alert-success" role="alert">
+                            Ce praticien a déjà été visité.
+                        </div>
+                    </div>
+                </div>
+                
             </div>
 			<div id="mapid"></div>
 		

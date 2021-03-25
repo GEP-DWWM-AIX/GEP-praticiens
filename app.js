@@ -7,7 +7,7 @@ const visiteCheck = document.querySelector('#visite');
 let userProfile = document.querySelector('.user-profile');
 let blocPraticien = document.querySelector('.praticiens');
 const villeList = document.querySelector('.ville-liste');
-const card = document.querySelector('.card');
+const card = document.querySelector('.card-autocomplete');
 const titre = document.querySelector('.praticiens h3');
 
 const getBySpeLoc = (myUrl) => {
@@ -47,7 +47,7 @@ const getBySpeLoc = (myUrl) => {
                     </div>
                 `);    
             });
-            getMap(adresses, mode, 6)
+            getMap(adresses, data, mode, 6)
             if (countPrat === 1) {
                 const card = document.querySelector('.card-praticien');
                 card.parentNode.classList.remove('col-md-6');
@@ -58,28 +58,46 @@ const getBySpeLoc = (myUrl) => {
                     blocPraticien.style.display = 'none';
                     userProfile.style.display = 'block';
                     let id = card.querySelector('.card-praticien').id;
-                    let userUrl = `http://localhost:90/gsb/praticien/${id}`;    
+                    let userUrl = `http://localhost:90/gsb/praticien/${id}`;  
                     fetch(userUrl)
                     .then(response => response.json())
-                    .then((data) => {
-                        userProfile.insertAdjacentHTML('beforeend', `
-                            <div class="card" style="width: 18rem; margin-top: 100px;">
-                                <img src="..." class="card-img-top" alt="...">
+                    .then((dataPrat) => {
+                        const tempArrayCity = [];
+                        const tempDataPrat = [];
+                        tempDataPrat.push(dataPrat);
+                        tempArrayCity.push(dataPrat.adresse)
+                        getMap(tempArrayCity, tempDataPrat, mode, 6);
+                        if (dataPrat.visite){
+                            document.querySelector('.alert-warning').style.display = 'none';
+                            document.querySelector('.alert-success').style.display = 'block';
+                        }else{
+                            document.querySelector('.alert-warning').style.display = 'block';
+                            document.querySelector('.alert-success').style.display = 'none';
+                        }
+                        userProfile.innerHTML = `
+                        <div class="card-bloc">
+                            <div class="card card-prat" style="width: 18rem;">
+                                <img src="./assets/images/avatar-praticien.png" class="card-img-top avatar-show-prat" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">${data.prenom} ${data.nom}</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">${data.specialite}</li>
-                                    <li class="list-group-item">${data.adresse}</li>
-                                    <li class="list-group-item">${data.visite}</li>
-                                </ul>
-                                <div class="card-body">
-                                    <a href="#" class="card-link">Mettre à jour</a>
-                                    <a href="#" class="card-link">Supprimer</a>
+                                    <h5 class="card-title">${dataPrat.prenom} ${dataPrat.nom}</h5>
+                                    <p class="card-text">${dataPrat.specialite}</p>
+                                    <p class="card-text">${dataPrat.adresse}</p>
+                                    <a href="#" class="btn btn-primary">Ajouter un commentaire</a>
                                 </div>
                             </div>
-                        `);
+                            <div class="card card-infos" style="width: 70%;">
+                                <div class="card-body">
+                                   <strong>Prénom et nom: </strong><span>${dataPrat.prenom} ${dataPrat.nom}</span>
+                                   <hr>
+                                   <strong>Email: </strong><span>soins-medecin-sud@gmail.com</span>
+                                   <hr>
+                                   <strong>Spécialité: </strong><span>${dataPrat.specialite}</span>
+                                   <hr>
+                                   <strong>Adresse du cabinet: </strong><span>${dataPrat.adresse}</span>
+                                </div>
+                            </div>
+                        </div>
+                        `;
                     })
                     .catch((err) => {
                         console.log('Erreur:' + err);
@@ -98,7 +116,7 @@ button.addEventListener('click', (event) => {
     let url = `http://localhost:90/gsb/praticien?`;
     let estVisite = visiteCheck.value;
     if (loc.value !== ''){
-        getMap(loc.value, mode);
+       // getMap(loc.value, mode);
         let ville = `ville=${ loc.value }`;
         url += ville;
     }
