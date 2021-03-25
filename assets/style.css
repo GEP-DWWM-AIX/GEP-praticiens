@@ -65,7 +65,7 @@ main{
     justify-content: space-around;
 }
 
-.map{
+#mapid {
     height: 90vh;
     width: 600px;
     background-color: white;
@@ -152,4 +152,29 @@ form{
     transition: .4s ease;
 }
 
+.card{
+    position: fixed;
+    width: 30%;
+    display: none;
+    z-index: 10;
+}
 
+.ville-liste li{
+    list-style: none;
+}
+.ville-liste li:hover{
+    background-color: #0A5ED6;
+    color: white;
+    transition: .4s ease-in-out;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card-title{
+    padding: 10px;
+}
+
+.fa-globe-africa{
+    position: absolute;
+    left: 20px;
+}
