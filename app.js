@@ -9,6 +9,7 @@ let blocPraticien = document.querySelector('.praticiens');
 const villeList = document.querySelector('.ville-liste');
 const card = document.querySelector('.card-autocomplete');
 const titre = document.querySelector('.praticiens h3');
+const userInfos = document.querySelector('.user-infos');
 
 const getBySpeLoc = (myUrl) => {
     let countPrat = 0;
@@ -57,6 +58,7 @@ const getBySpeLoc = (myUrl) => {
                 card.addEventListener('click', (event) => {
                     blocPraticien.style.display = 'none';
                     userProfile.style.display = 'block';
+                    
                     let id = card.querySelector('.card-praticien').id;
                     let userUrl = `http://localhost:90/gsb/praticien/${id}`;  
                     fetch(userUrl)
@@ -74,7 +76,8 @@ const getBySpeLoc = (myUrl) => {
                             document.querySelector('.alert-warning').style.display = 'block';
                             document.querySelector('.alert-success').style.display = 'none';
                         }
-                        userProfile.innerHTML = `
+                       userInfos.innerHTML = '';
+                        userInfos.insertAdjacentHTML('beforeend', `
                         <div class="card-bloc">
                             <div class="card card-prat" style="width: 18rem;">
                                 <img src="./assets/images/avatar-praticien.png" class="card-img-top avatar-show-prat" alt="...">
@@ -82,7 +85,8 @@ const getBySpeLoc = (myUrl) => {
                                     <h5 class="card-title">${dataPrat.prenom} ${dataPrat.nom}</h5>
                                     <p class="card-text">${dataPrat.specialite}</p>
                                     <p class="card-text">${dataPrat.adresse}</p>
-                                    <a href="#" class="btn btn-primary">Ajouter un commentaire</a>
+                                    <a href="#" class="btn btn-warning btn-show">Modifier les informations</a>
+                                    <a href="#" class="btn btn-danger btn-show">Supprimer ce praticien</a>
                                 </div>
                             </div>
                             <div class="card card-infos" style="width: 70%;">
@@ -97,7 +101,7 @@ const getBySpeLoc = (myUrl) => {
                                 </div>
                             </div>
                         </div>
-                        `;
+                        `) ;
                     })
                     .catch((err) => {
                         console.log('Erreur:' + err);

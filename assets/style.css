@@ -210,3 +210,12 @@ form{
 .card-infos span{
     color: gray;
 }
+
+.btn-show{
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.form-group{
+    width: 100%;
+}
